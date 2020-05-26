@@ -13,7 +13,6 @@ class datastructures_tests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-      XCTAssert(TestStruct.pass())
     }
 
     func testPerformanceExample() throws {

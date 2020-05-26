@@ -18,6 +18,113 @@
             endingLineNumber = "3"
             landmarkName = "datastructures_tests"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - b88231e50359fedb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.__deallocating_deinit"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - 867c19f5ad8391d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.__allocating_init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; datastructures_tests.datastructures_tests"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - ebda433ec0d5bbfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; datastructures_tests.datastructures_tests"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3"
+                  endingLineNumber = "3"
+                  offsetFromSymbolStart = "119">
+               </Location>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - a4edfaff00a79b93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.__allocating_init(selector: ObjectiveC.Selector) -&gt; datastructures_tests.datastructures_tests"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - 38f60a1b17b3c9db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.init(selector: ObjectiveC.Selector) -&gt; datastructures_tests.datastructures_tests"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3"
+                  endingLineNumber = "3"
+                  offsetFromSymbolStart = "119">
+               </Location>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - 98231c3791b82d36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.__allocating_init() -&gt; datastructures_tests.datastructures_tests"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "6717EEDD-2FEC-441A-BC8D-91849C2717B6 - fba48c8c14392730"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "datastructures_tests.datastructures_tests.init() -&gt; datastructures_tests.datastructures_tests"
+                  moduleName = "datastructures_tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dev/Repositories/level_up/kata/data_structures/swift/datastructures/datastructures_tests/datastructures_tests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3"
+                  endingLineNumber = "3"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
