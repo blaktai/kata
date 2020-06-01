@@ -22,11 +22,22 @@ class LinkedListTests: XCTestCase {
     }
   
     func testRemove() throws {
-      
+      var ll = LinkedList<Int>()
+      let secondNode = LLNode(value: 2)
+      let firstNode = LLNode(value: 1, next: secondNode)
+      ll.insert(value: 1)
+      ll.insert(value: 2)
+      ll.remove(index: 0)
+      XCTAssertEqual(ll.first, secondNode, "Second Node was not removed")
     }
     
     func testRemoveLast() throws {
-      
+      var ll = LinkedList<Int>()
+      let firstNode = LLNode(value: 1)
+      ll.insert(value: 1)
+      ll.insert(value: 2)
+      ll.removeLast()
+      XCTAssertEqual(ll.first, firstNode, "Second Node was not removed")
     }
   
     func testIsEmpty() throws {
@@ -46,7 +57,11 @@ class LinkedListTests: XCTestCase {
     }
     
     func testSubscript() throws {
-      
+      var ll = LinkedList<Int>()
+      let secondNode = LLNode(value: 2)
+      ll.insert(value: 1)
+      ll.insert(value: 2)
+      XCTAssertEqual(ll[1], secondNode, "Second Node was not removed")
     }
 
 }
