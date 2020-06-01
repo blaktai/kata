@@ -39,6 +39,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     return head == nil
   }
   
+  @discardableResult
   public mutating func insert(value:T) -> Bool{
     let newNode = LLNode(value: value)
     guard var first = head else {
@@ -61,7 +62,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   }
   
   @discardableResult
-  public mutating func insert(at:Int, value:T) -> Bool{
+  public mutating func insert(at:Int, value:T) -> Bool {
     let newNode = LLNode(value: value)
     guard var first = head else {
       head = newNode
@@ -105,6 +106,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     while let nextElement = current.next {
       if counter == index {
         current.next = nextElement.next
+        current.value = nextElement.value
         return true
       }
       current = nextElement
@@ -113,23 +115,22 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     return false
   }
   
+  
+  @discardableResult
   public mutating func removeLast() -> Bool {
     guard var currentElement = first else { return false }
     if first == last { head = nil; tail = nil; return true }
-    while currentElement != tail {
-      if currentElement.next == tail {
+    while let nextElement = currentElement.next {
+      if nextElement == tail {
         tail = currentElement
         currentElement.next = nil
       }
-      if let nextElement = currentElement.next {
-        currentElement = nextElement
-      }
-    
+        currentElement = nextElement      
     }
     return true
   }
   
-  internal mutating func next() -> LLNode<T>? {
+  mutating func next() -> LLNode<T>? {
     guard let currentNode = self.currentNode else {
       self.currentNode = self.first
       return self.currentNode
@@ -166,5 +167,4 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
       }
     }
   }
-  
 }
