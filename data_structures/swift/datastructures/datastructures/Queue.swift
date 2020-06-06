@@ -12,8 +12,3 @@ struct Queue<T> {
         return items.popLast()
     }
 }
-
-protocol Queueable {
-    func enqueue()
-    func dequeue()
-}
