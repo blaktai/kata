@@ -175,8 +175,8 @@ extension LinkedList {
   }
 }
 
-extension LinkedList: CustomStringConvertible {
-  enum Error: Swift.Error {
+extension LinkedList {
+  enum Error: Swift.Error, CustomStringConvertible {
     case emptyList
     case boundsError
     
