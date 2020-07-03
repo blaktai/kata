@@ -1,37 +1,19 @@
 import Foundation
 
-class LLNode<T:Equatable>: CustomStringConvertible, Equatable {
-  static func == (lhs:LLNode<T>, rhs:LLNode<T>) -> Bool {
-    return lhs.value == rhs.value && lhs.next == rhs.next
-  }
-  var description: String {
-    guard let next = next else { return "\(value)"}
-    return "\(value) -> \(next)"
-    
-  }
-  public var value: T
-  public var next: LLNode?
-  
-  init(value:T, next:LLNode? = nil){
-    self.value = value
-    self.next = next
-  }
-}
-
 struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Sequence {
   public var description: String {
-    guard let first = head else { return "list is empty"}
+    guard let first = head else { return "list is empty" }
     return "\(first)"
   }
-  private var head: LLNode<T>?
-  private var tail: LLNode<T>?
-  private var currentNode: LLNode<T>?
+  private var head: Node<T>?
+  private var tail: Node<T>?
+  private var currentNode: Node<T>?
   
-  public var first: LLNode<T>?{
+  public var first: Node<T>?{
     return head
   }
   
-  public var last: LLNode<T>? {
+  public var last: Node<T>? {
     return tail
   }
   
@@ -41,7 +23,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   
   @discardableResult
   public mutating func insert(value:T) -> Bool{
-    let newNode = LLNode(value: value)
+    let newNode = Node(value: value)
     guard var first = head else {
       head = newNode
       tail = newNode
@@ -63,7 +45,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   
   @discardableResult
   public mutating func insert(at:Int, value:T) -> Bool {
-    let newNode = LLNode(value: value)
+    let newNode = Node(value: value)
     guard var first = head else {
       head = newNode
       tail = newNode
@@ -83,7 +65,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     return true
   }
   
-  public func search(index:Int) -> LLNode<T>?{
+  public func search(index:Int) -> Node<T>?{
     guard !isEmpty else { return nil }
     var first = head
     var counter = 0
@@ -130,7 +112,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     return true
   }
   
-  mutating func next() -> LLNode<T>? {
+  mutating func next() -> Node<T>? {
     guard let currentNode = self.currentNode else {
       self.currentNode = self.first
       return self.currentNode
@@ -142,7 +124,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     return nil
   }
   
-  subscript(index:Int) -> LLNode<T> {
+  subscript(index:Int) -> Node<T> {
     get {
       var index = index
       guard var currentNode = self.head else { fatalError("Index out of bounds") }
@@ -165,6 +147,26 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
         }
         index -= 1
       }
+    }
+  }
+}
+
+extension LinkedList {
+   class Node<T:Equatable>: CustomStringConvertible, Equatable {
+    static func == (lhs:Node<T>, rhs:Node<T>) -> Bool {
+      return lhs.value == rhs.value && lhs.next == rhs.next
+    }
+    var description: String {
+      guard let next = next else { return "\(value)"}
+      return "\(value) -> \(next)"
+      
+    }
+    public var value: T
+    public var next: Node?
+    
+    init(value:T, next:Node? = nil){
+      self.value = value
+      self.next = next
     }
   }
 }
