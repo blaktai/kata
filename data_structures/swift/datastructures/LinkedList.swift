@@ -2,7 +2,7 @@ import Foundation
 
 struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Sequence {
   public var description: String {
-    guard let first = head else { return "list is empty" }
+    guard let first = head else { return Error.emptyList.description }
     return "\(first)"
   }
   private var head: Node<T>?
@@ -107,7 +107,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
         tail = currentElement
         currentElement.next = nil
       }
-        currentElement = nextElement      
+      currentElement = nextElement
     }
     return true
   }
@@ -127,7 +127,9 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   subscript(index:Int) -> Node<T> {
     get {
       var index = index
-      guard var currentNode = self.head else { fatalError("Index out of bounds") }
+      guard var currentNode = self.head else {
+        fatalError(Error.boundsError.description)
+      }
       while index > 0 {
         if let nextNode = currentNode.next {
           currentNode = nextNode
@@ -138,7 +140,9 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     }
     set {
       var index = index
-      guard var currentNode = self.head else { fatalError("Index out of bounds") }
+      guard var currentNode = self.head else {
+        fatalError(Error.boundsError.description)
+      }
       while index > 0 {
         if let nextNode = currentNode.next {
           currentNode = nextNode
@@ -152,7 +156,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
 }
 
 extension LinkedList {
-   class Node<T:Equatable>: CustomStringConvertible, Equatable {
+  class Node<T:Equatable>: CustomStringConvertible, Equatable {
     static func == (lhs:Node<T>, rhs:Node<T>) -> Bool {
       return lhs.value == rhs.value && lhs.next == rhs.next
     }
@@ -167,6 +171,20 @@ extension LinkedList {
     init(value:T, next:Node? = nil){
       self.value = value
       self.next = next
+    }
+  }
+}
+
+extension LinkedList: CustomStringConvertible {
+  enum Error: Swift.Error {
+    case emptyList
+    case boundsError
+    
+    var description: String {
+      switch self {
+      case .emptyList: return "List is empty"
+      case .boundsError: return "Index out of bounds"
+      }
     }
   }
 }
