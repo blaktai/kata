@@ -37,7 +37,28 @@ class BinarySearchTree<T:Comparable> {
       insert(node: node.right!, newNode: newNode)
     }
   }
+  
+  public func max<T>() -> T? {
+    guard let currentNode = self.root else { return nil }
+    return (max(node: currentNode).value as? T)
+  }
+  
+  private func max<T>(node:Node<T>) -> Node<T> {
+    return node.right == nil ? node : max(node: node.right!)
+  }
+  
+  public func min() -> T? {
+    guard let currentNode = self.root else { return nil }
+    return min(node: currentNode).value
+  }
+  
+  private func min<T>(node:Node<T>) -> Node<T> {
+    return node.left == nil ? node : min(node: node.left!)
+  }
 }
+
+
+
 
 // MARK: - BinarySearchTree.Node
 extension BinarySearchTree {
