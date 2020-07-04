@@ -46,7 +46,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   @discardableResult
   public mutating func insert(at:Int, value:T) -> Bool {
     let newNode = Node(value: value)
-    guard var first = head else {
+    guard let currentNode = head else {
       head = newNode
       tail = newNode
       return true
@@ -56,11 +56,10 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
       tail = newNode
       return true
     }
-    while (first != tail){
-      if first.next == tail {
-        first.next?.next = newNode
+    while let currentNode = currentNode.next {
+      if currentNode.next == tail {
+        currentNode.next?.next = newNode
       }
-      first = first.next!
     }
     return true
   }
@@ -97,6 +96,20 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
     return false
   }
   
+  
+  @discardableResult
+  public mutating func removeLast() -> T? {
+    guard var currentElement = first else { return nil }
+    if first == last { head = nil; tail = nil; return currentElement.value }
+    while let nextElement = currentElement.next {
+      if nextElement == tail {
+        tail = currentElement
+        currentElement.next = nil
+      }
+      currentElement = nextElement
+    }
+    return currentElement.value
+  }
   
   @discardableResult
   public mutating func removeLast() -> Bool {
@@ -155,6 +168,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   }
 }
 
+// MARK: - LinkList.Node
 extension LinkedList {
   class Node<T:Equatable>: CustomStringConvertible, Equatable {
     static func == (lhs:Node<T>, rhs:Node<T>) -> Bool {
@@ -175,6 +189,7 @@ extension LinkedList {
   }
 }
 
+// MARK: - LinkList.Error
 extension LinkedList {
   enum Error: Swift.Error, CustomStringConvertible {
     case emptyList
