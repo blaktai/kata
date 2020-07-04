@@ -24,28 +24,6 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   @discardableResult
   public mutating func insert(value:T) -> Bool{
     let newNode = Node(value: value)
-    guard var first = head else {
-      head = newNode
-      tail = newNode
-      return true
-    }
-    if head == tail {
-      tail?.next = newNode
-      tail = newNode
-      return true
-    }
-    while (first != tail){
-      if first.next == tail {
-        first.next?.next = newNode
-      }
-      first = first.next!
-    }
-    return true
-  }
-  
-  @discardableResult
-  public mutating func insert(at:Int, value:T) -> Bool {
-    let newNode = Node(value: value)
     guard let currentNode = head else {
       head = newNode
       tail = newNode
@@ -61,6 +39,15 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
         currentNode.next?.next = newNode
       }
     }
+    return true
+  }
+  
+  @discardableResult
+  public mutating func insert(at index:Int, value:T) -> Bool {
+    let previousIndex = index == 0 ? 0 : index - 1
+    guard let foundNode = search(index: previousIndex) else { return false }
+    let newNode = Node(value: value, next: foundNode.next)
+    foundNode.next = newNode
     return true
   }
   
@@ -80,9 +67,8 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   
   @discardableResult
   public mutating func remove(index:Int) -> Bool {
-    
     guard var current = first else { return false }
-    if first == last { head = nil; tail = nil; return true }
+    if current == last { head = nil; tail = nil; return true }
     var counter = 0
     while let nextElement = current.next {
       if counter == index {
@@ -139,30 +125,14 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   
   subscript(index:Int) -> Node<T> {
     get {
-      var index = index
-      guard var currentNode = self.head else {
+      guard let foundNode = search(index: index) else {
         fatalError(Error.boundsError.description)
       }
-      while index > 0 {
-        if let nextNode = currentNode.next {
-          currentNode = nextNode
-        }
-        index -= 1
-      }
-      return currentNode
+      return foundNode
     }
     set {
-      var index = index
-      guard var currentNode = self.head else {
+      guard insert(at: index, value: newValue.value) else {
         fatalError(Error.boundsError.description)
-      }
-      while index > 0 {
-        if let nextNode = currentNode.next {
-          currentNode = nextNode
-        } else {
-          currentNode.next = newValue
-        }
-        index -= 1
       }
     }
   }
