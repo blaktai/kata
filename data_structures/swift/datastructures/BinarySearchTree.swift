@@ -7,7 +7,7 @@ class BinarySearchTree<T:Comparable>: IteratorProtocol, Sequence {
   public func contains(_ value:T) -> Bool {
     return search(value)?.value == value
   }
-  
+
   private func search(_ value:T) -> Node<T>? {
     guard let root = self.root else { return nil }
     return search(value, node: root)
@@ -72,6 +72,16 @@ class BinarySearchTree<T:Comparable>: IteratorProtocol, Sequence {
     return nil
   }
 }
+
+// MARK: - BinarySearchTree.Traversal
+extension BinarySearchTree {
+  private enum Traversal {
+    case inOrder
+    case preOrder
+    case postOrder
+  }
+}
+
 
 // MARK: - BinarySearchTree.Node
 extension BinarySearchTree {
