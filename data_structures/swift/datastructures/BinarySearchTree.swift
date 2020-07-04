@@ -1,8 +1,12 @@
 import Foundation
 
-class BinarySearchTree<T:Comparable> {
+class BinarySearchTree<T:Comparable>: IteratorProtocol, Sequence {
   typealias Element = T
   private var root: Node<T>?
+  private var currentNode: Node<T>?
+  public func contains(_ value:T) -> Bool {
+    return search(value)?.value == value
+  }
   
   private func search(_ value:T) -> Node<T>? {
     guard let root = self.root else { return nil }
@@ -55,10 +59,19 @@ class BinarySearchTree<T:Comparable> {
   private func min<T>(node:Node<T>) -> Node<T> {
     return node.left == nil ? node : min(node: node.left!)
   }
+  
+  public func next() -> T? {
+    guard let currentNode = self.currentNode else {
+      self.currentNode = self.root
+      return self.currentNode?.value
+    }
+    while let nextElement = currentNode.next {
+      self.currentNode = nextElement
+      return nextElement.value
+    }
+    return nil
+  }
 }
-
-
-
 
 // MARK: - BinarySearchTree.Node
 extension BinarySearchTree {
@@ -66,6 +79,9 @@ extension BinarySearchTree {
     public var left: Node?
     public var right: Node?
     public var value: T
+    fileprivate var next: Node<T>? {
+      return left != nil ? left : right
+    }
     
     init(value:T, left:Node? = nil, right:Node? = nil) {
       self.value = value
