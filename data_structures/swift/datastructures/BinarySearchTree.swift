@@ -3,7 +3,25 @@ import Foundation
 class BinarySearchTree<T:Comparable> {
   typealias Element = T
   private var root: Node<T>?
+  
+  private func search(_ value:T) -> Node<T>? {
+    guard let root = self.root else { return nil }
+    return search(value, node: root)
+  }
+  
+  private func search(_ value:T, node:Node<T>) -> Node<T>? {
+    if node.value == value {
+      return node
+    } else if let rightNode = node.right, value > node.value {
+      return search(value, node: rightNode)
+    } else if let leftNode = node.left,  value <= node.value  {
+      return search(value, node: leftNode)
+    }
+    return nil
+  }
 }
+
+
 
 
 // MARK: - BinarySearchTree.Node
@@ -20,4 +38,3 @@ extension BinarySearchTree {
     }
   }
 }
-
