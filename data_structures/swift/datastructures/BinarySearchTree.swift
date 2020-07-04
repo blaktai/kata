@@ -19,10 +19,25 @@ class BinarySearchTree<T:Comparable> {
     }
     return nil
   }
+  
+  public func insert(_ value:T) {
+    let newNode = Node(value: value)
+    guard let currentNode = self.root else { self.root = newNode; return }
+    insert(node: currentNode, newNode: newNode)
+  }
+  
+  private func insert(node:Node<T>, newNode:Node<T>) {
+    if node.value > newNode.value && node.left == nil {
+      node.left = newNode
+    } else if node.value <= newNode.value && node.right == nil {
+      node.right = newNode
+    } else if node.value > newNode.value {
+      insert(node: node.left!, newNode: newNode)
+    } else {
+      insert(node: node.right!, newNode: newNode)
+    }
+  }
 }
-
-
-
 
 // MARK: - BinarySearchTree.Node
 extension BinarySearchTree {
