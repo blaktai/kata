@@ -11,8 +11,8 @@ class LinkedListTests: XCTestCase {
   
     func testSearch() throws {
       var ll = LinkedList<Int>()
-      let secondNode = LLNode(value: 2)
-      let firstNode = LLNode(value: 1, next: secondNode)
+      let secondNode = LinkedList<Int>.Node(value: 2)
+      let firstNode = LinkedList<Int>.Node(value: 1, next: secondNode)
       ll.insert(value: 1)
       ll.insert(value: 2)
       let firstSearch = ll.search(index: 0)
@@ -23,17 +23,19 @@ class LinkedListTests: XCTestCase {
   
     func testRemove() throws {
       var ll = LinkedList<Int>()
-      let secondNode = LLNode(value: 2)
-      let firstNode = LLNode(value: 1, next: secondNode)
+      let secondNode = LinkedList<Int>.Node(value: 2)
+      let firstNode = LinkedList<Int>.Node(value: 1, next: secondNode)
       ll.insert(value: 1)
       ll.insert(value: 2)
+      ll.insert(value: 3)
+      ll.insert(value: 4)
       ll.remove(index: 0)
       XCTAssertEqual(ll.first, secondNode, "Second Node was not removed")
     }
     
     func testRemoveLast() throws {
       var ll = LinkedList<Int>()
-      let firstNode = LLNode(value: 1)
+      let firstNode = LinkedList<Int>.Node(value: 1)
       ll.insert(value: 1)
       ll.insert(value: 2)
       ll.removeLast()
@@ -58,7 +60,7 @@ class LinkedListTests: XCTestCase {
     
     func testSubscript() throws {
       var ll = LinkedList<Int>()
-      let secondNode = LLNode(value: 2)
+      let secondNode = LinkedList<Int>.Node(value: 2)
       ll.insert(value: 1)
       ll.insert(value: 2)
       XCTAssertEqual(ll[1], secondNode, "Second Node was not removed")
