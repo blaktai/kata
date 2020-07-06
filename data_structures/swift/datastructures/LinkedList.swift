@@ -29,16 +29,8 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
       tail = newNode
       return true
     }
-    if head == tail {
-      tail?.next = newNode
-      tail = newNode
-      return true
-    }
-    while let currentNode = currentNode.next {
-      if currentNode.next == tail {
-        currentNode.next?.next = newNode
-      }
-    }
+    tail?.next = newNode
+    tail = newNode
     return true
   }
   
@@ -84,7 +76,7 @@ struct LinkedList <T:Equatable> : CustomStringConvertible, IteratorProtocol, Seq
   
   
   @discardableResult
-  public mutating func removeLast() -> T? {
+  public mutating func popLast() -> T? {
     guard var currentElement = first else { return nil }
     if first == last { head = nil; tail = nil; return currentElement.value }
     while let nextElement = currentElement.next {
