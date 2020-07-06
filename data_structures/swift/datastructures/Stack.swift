@@ -9,7 +9,7 @@ struct StackLL<T:Equatable> {
   
   @discardableResult
   public mutating func pop() -> T? {
-    return items.removeLast()
+    return items.popLast()
   }
 }
 
