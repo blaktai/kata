@@ -5,6 +5,17 @@ class Trie {
   init(_ char:Character){
     self.root = Node(value: char)
   }
+  
+  public func contains(word:String) -> Bool {
+    guard let firstChar = word.first,
+      var currentNode = root.children[firstChar] else { return false }
+    
+    for (idx, char) in word.enumerated() where idx != 0 {
+      guard let node = currentNode.children[char] else { return false }
+      currentNode = node
+    }
+    return true 
+  }
 }
 
 extension Trie {
